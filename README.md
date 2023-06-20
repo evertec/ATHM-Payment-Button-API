@@ -163,18 +163,12 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 | PublicToken | String | YES | Business account public token | Determines the business account that the payment will be sent to. |
 | Timeout | Number | No | Number between 120 and 600. | Cancels the payment process if the payment hasn't been completed by the end user after the provided amount of time (in seconds). Timer starts immediately after the end user presses the Payment Button. Default value is set to 600 seconds (10 mins). |
 | Total | Number | Yes | From 1.00 to 1500.00 | Total amount to be paid by the end user. |
-| Tax | Number | No |
- | Optional variable to display the payment tax (if applicable). |
-| Subtotal | Number | No |
- | Optional variable to display the payment tax (if applicable). |
-| Metadata1 | String | Yes |
- | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
-| Metadata2 | String | Yes |
- | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
-| Items | Array | Yes |
- | Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. _metadata and tax are required but they can be set as null._ |
-| phoneNumber | Number | Yes |
- | The phone number registered to the ATH Móvil account where the payment is going to be sent to. |
+| Tax | Number | No || Optional variable to display the payment tax (if applicable). |
+| Subtotal | Number | No || Optional variable to display the payment tax (if applicable). |
+| Metadata1 | String | Yes || Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+| Metadata2 | String | Yes || Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+| Items | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. _metadata and tax are required but they can be set as null._ |
+| phoneNumber | Number | Yes || The phone number registered to the ATH Móvil account where the payment is going to be sent to. |
 
 **Response**
 
@@ -404,7 +398,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 - **metadata2** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
 - **items** : Items paid in the transaction.
 
-Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
+## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
 
 {
 
@@ -472,7 +466,7 @@ Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COM
 
 }
 
-Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
+## Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
 
 {
 
@@ -542,7 +536,7 @@ Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Respon
 
     }
 
-Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status **CONFIRM**
+## Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status **CONFIRM**
 
 {
 
@@ -886,7 +880,7 @@ This is a Web Service to cancel the ecommerce transaction.
 
 The error messages for the PB API's will follow a standard response structure of status, message, error code and data. Below are some examples of the responses and a list of all available error scenarios.
 
-- Request without a token authentication.
+## Request without a token authentication.
 
 {
 
@@ -900,7 +894,7 @@ The error messages for the PB API's will follow a standard response structure of
 
 }
 
-- Request with an expired token.
+## Request with an expired token.
 
 {
 
@@ -914,7 +908,7 @@ The error messages for the PB API's will follow a standard response structure of
 
 }
 
-- When the Object request it's empty.
+## When the Object request it's empty.
 
 {
 
