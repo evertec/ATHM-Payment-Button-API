@@ -1,20 +1,4 @@
-# ATHM-Payment-Button-API
-The ATH Móvil Payment Button is an API REST based application implemented to support ecommerce payments for ATH Business merchants. 
-
-## Prerequisites
-Before you begin, please review the following prerequisites:
-
-1. An active ATH Móvil Business account is required to continue. To sign up, download "ATH Móvil Business" on the App Store or Play Store of your iOS or Android device.
-
-
-2. Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
-
-3. Have the public and private API keys of your Business account at hand. **You can view your API keys on the settings section of ATH Móvil Business for iOS or Android.**
-
-## Support
-If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
 # ATH Móvil Technical Documentation
-
 for Payment Button API´s
 
 # Change Log
@@ -77,9 +61,9 @@ Before using the ATH Móvil's payment you need to have:
 
 3. The public and private key assigned to your business.
 
-To start working with the API´s for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account.
+To start working with the API´s for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account.**
 
-ATH Business Settings:
+**ATH Business Settings:**
 
 ![](RackMultipart20230620-1-9lu3np_html_5f784336f74bda78.jpg) ![](RackMultipart20230620-1-9lu3np_html_eafcc5ab0c91a13d.jpg)
 
@@ -129,6 +113,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 - **total** : The total is the amount that the user who just invoked the payment button must pay the merchant.
 - **Timeout** : The business can specify the time for each ecommerce transaction before the service responds with timeout error.
 
+{
 "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
 "timeout": "5000",
@@ -196,7 +181,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
     "status": "success",
 
-    "data": {
+    "data": 
+    {
 
         "ecommerceId": "0ab257f5-3837-11ed-855f-9b4af5a393ce",
 
@@ -204,7 +190,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
     }
 
-}
+
 
 ## Confirm Service
 
@@ -267,11 +253,12 @@ curl --location --request POST 'HOST/business-transaction/ecommerce/authorizatio
 
 --header 'Content-Type: application/json' \
 
---data-raw '{
+--data-raw 
+{
 
     "ecommerceId": "41945f05-2b1a-11ed-a1c5-077060cc68b2"
 
-}'
+}
 
 **Response**
 
