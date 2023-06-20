@@ -117,6 +117,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 - **total** : The total is the amount that the user who just invoked the payment button must pay the merchant.
 - **Timeout** : The business can specify the time for each ecommerce transaction before the service responds with timeout error.
 
+```
+
 {
 "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
@@ -156,6 +158,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 }'
 
+```
+
 **Detail:**
 
 | **Variable** | **Data type** | **Required** | **Values** | **Description** |
@@ -175,6 +179,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 - **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
 - **auth\_token** : This token identifies the transaction authorized by the user pending to be submitted by the ecommerce app.
 
+```
+
 {
 
     "status": "success",
@@ -188,6 +194,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
     }
 
+```
 
 
 ## Confirm Service
@@ -207,6 +214,8 @@ If a Merchant wants to use the API's, then the merchant must configure a service
 - **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
 - **cardAccountID** : ID of the card registered on the ATH Móvil's account.
 
+```
+
 {
 
    "ecommerceId":"{{ecommerceId}}",
@@ -215,7 +224,9 @@ If a Merchant wants to use the API's, then the merchant must configure a service
 
 }
 
+```
 **Response:**
+```
 
 {
 
@@ -225,6 +236,7 @@ If a Merchant wants to use the API's, then the merchant must configure a service
 
 }
 
+```
 ## Authorization Service
 
 ![Shape6](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
@@ -252,11 +264,16 @@ curl --location --request POST 'HOST/business-transaction/ecommerce/authorizatio
 --header 'Content-Type: application/json' \
 
 --data-raw 
+
+```
+
 {
 
     "ecommerceId": "41945f05-2b1a-11ed-a1c5-077060cc68b2"
 
 }
+
+```
 
 **Response**
 
@@ -278,6 +295,8 @@ curl --location --request POST 'HOST/business-transaction/ecommerce/authorizatio
 - **metadata1** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
 - **metadata2** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
 - **items** : Items paid for in the transaction.
+
+```
 
 {
 
@@ -345,6 +364,7 @@ curl --location --request POST 'HOST/business-transaction/ecommerce/authorizatio
 
 }
 
+```
 ## Find Payment Service
 
 ![Shape7](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
@@ -399,6 +419,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 - **items** : Items paid in the transaction.
 
 ## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
+```
 
 {
 
@@ -466,7 +487,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 }
 
+```
 ## Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
+```
 
 {
 
@@ -536,7 +559,10 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
     }
 
+```
+
 ## Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status **CONFIRM**
+```
 
 {
 
@@ -608,7 +634,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 }
 
+```
 ## Transaction Expired or Canceled Response: Status CANCEL
+```
 
 {
 
@@ -680,7 +708,8 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 }
 
-##
+```
+
 
 ## Update Payment (Phone Number)
 
@@ -719,6 +748,7 @@ Header:
 }'
 
 **Response:**
+```
 
 {
 
@@ -728,6 +758,7 @@ Header:
 
 }
 
+```
 ## Refund Payment
 
 ![Shape9](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
@@ -747,6 +778,7 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
     - Host
 
 **Request:**
+```
 
 {
 
@@ -762,7 +794,10 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
 
 }
 
+```
+
 **Response**
+```
 
 {
 
@@ -834,9 +869,7 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
 
 }
 
-}
-
-}
+```
 
 ## Cancel Payment
 
@@ -857,12 +890,15 @@ This is a Web Service to cancel the ecommerce transaction.
     - Host
 
 **Request:**
+```
 
 "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
 
 "publicToken": "3adc528b182e50b41acff658136bd974c89604c3"
 
+```
 **Response:**
+```
 
 {
 
@@ -872,6 +908,7 @@ This is a Web Service to cancel the ecommerce transaction.
 
 }
 
+```
 #
 
 ## Error Messages
@@ -881,6 +918,7 @@ This is a Web Service to cancel the ecommerce transaction.
 The error messages for the PB API's will follow a standard response structure of status, message, error code and data. Below are some examples of the responses and a list of all available error scenarios.
 
 ## Request without a token authentication.
+```
 
 {
 
@@ -894,7 +932,9 @@ The error messages for the PB API's will follow a standard response structure of
 
 }
 
+```
 ## Request with an expired token.
+```
 
 {
 
@@ -908,7 +948,9 @@ The error messages for the PB API's will follow a standard response structure of
 
 }
 
+```
 ## When the Object request it's empty.
+```
 
 {
 
@@ -922,6 +964,7 @@ The error messages for the PB API's will follow a standard response structure of
 
 }
 
+```
 **Additional Error Codes** :
 
 | Error code | Description |
