@@ -1,5 +1,5 @@
 # ATH Móvil Technical Documentation
-for Payment Button API´s
+for ATH Móvil Payment Button API.
 
 # Change Log
 
