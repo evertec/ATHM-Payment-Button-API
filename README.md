@@ -65,9 +65,12 @@ To start working with the API´s for ATH Móvils Payment Button with all its ser
 
 **ATH Business Settings:**
 
-![](RackMultipart20230620-1-9lu3np_html_5f784336f74bda78.jpg) ![](RackMultipart20230620-1-9lu3np_html_eafcc5ab0c91a13d.jpg)
+![Setting1](https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/f48d3f66-0659-41ab-b2ca-dc26e108575c) ![Setting2](https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/66f310c5-caa5-4d06-91b9-ac5a93d367e9)
 
-HTTPS
+
+
+
+**HTTPS**
 
 Is important to highlight that all the exposed services from API must be called by using HTTPS protocol.
 
@@ -81,11 +84,12 @@ All the requests sent to the API should be in a simple and concise format like: 
 
 The new version of the payment button will introduce more security and synchronization with both the merchant and the customer. Here you can see a brief diagram on the high-level flow of the transaction:
 
-![](RackMultipart20230620-1-9lu3np_html_adad30f4a2210cf8.png)
+
+<img width="468" alt="Picture1" src="https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/95e8d2c9-c43b-4061-bb38-5f342821524c">
 
 ##
 
-##
+
 
 ## Payment Service
 
@@ -1053,7 +1057,7 @@ Withing the reports of ATH Business this transaction will be registered as an EC
 
 Reporting example
 
-![](RackMultipart20230620-1-9lu3np_html_1369c526c666fc53.png)
+<img width="468" alt="report" src="https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/8080c8e9-5afe-4d49-b199-7f80582381b0">
 
 ## Other information
 
@@ -1065,4 +1069,5 @@ This way you guarantee you are receiving payments only through the payment butto
 
 This change can be performed within the app via the settings.
 
-![](RackMultipart20230620-1-9lu3np_html_12c5587869ee7af1.png)
+<img width="468" alt="Picture2" src="https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/221d4b6f-b3c2-4630-8319-e86736eb0dc2">
+
