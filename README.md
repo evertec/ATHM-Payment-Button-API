@@ -49,6 +49,7 @@ Ours clients that use the Payment Button (PB) will be able to integrate each of 
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
+Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
 ## Prerequisites
 
 ![Shape2](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
