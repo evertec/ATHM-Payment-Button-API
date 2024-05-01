@@ -767,7 +767,7 @@ Header:
 This is a Web Service that allows to refund a completed ecommerce transaction.
 
 - Business Transaction
-  - Endpoint: "https://www.athmovil.com./api/business-transaction/ecommerce/refund"
+  - Endpoint: "https://payments.athmovil.com/api/business-transaction/ecommerce/refund"
   - Object Request: {"amount": 0, "message": "string", "privateToken": "string", "publicToken": "string", "referenceNumber": "string"}
   - Type: REST
   - Format: application/json
