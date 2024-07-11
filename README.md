@@ -202,7 +202,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 ![Shape5](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
 
-The Confirm service is the second step in the payment button's process. This service is performed by Evertec via the apps through the SDK our via backend. This service updates the ticket order once the customer has received the push notification, reviews and confirms the payment in our ATHM App.
+The Confirm service is the second step in the payment button's process. This service is performed by Evertec via the apps through the SDK our via backend. It does not need to be requested by the merchant or the ecommerce platform. This service updates the ticket order once the customer has received the push notification, reviews and confirms the payment in our ATHM App.
 
 If a Merchant wants to use the API's, then the merchant must configure a service to verify if the confirm was completed to proceed to the 3rd service.
 
