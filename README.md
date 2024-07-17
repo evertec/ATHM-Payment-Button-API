@@ -135,7 +135,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 - **publicToken** : This public token is the identifier of each business registered for the use of the payment button.
 - **total** : The total is the amount that the user who just invoked the payment button must pay the merchant.
-- **Timeout** : The business can specify the time for each ecommerce transaction before the service responds with timeout error.
+- **Timeout** : Time limit before the service responds with timeout error.
 
 ```
 
@@ -185,7 +185,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 | **Variable** | **Data type** | **Required** | **Values** | **Description** |
 | --- | --- | --- | --- | --- |
 | PublicToken | String | YES | Business account public token | Determines the business account that the payment will be sent to. |
-| Timeout | Number | No | Number between 120 and 600. | Cancels the payment process if the payment hasn't been completed by the end user after the provided amount of time (in seconds). Timer starts immediately after the end user presses the Payment Button. Default value is set to 600 seconds (10 mins). |
+| Timeout | Number | No | Number between 120 and 600. | Time limit before the service responds with timeout error. Default value is set to 600 seconds (10 mins). |
 | Total | Number | Yes | From 1.00 to 1500.00 | Total amount to be paid by the end user. |
 | Tax | Number | No || Optional variable to display the payment tax (if applicable). |
 | Subtotal | Number | No || Optional variable to display the payment tax (if applicable). |
