@@ -19,11 +19,10 @@ for ATH Móvil Payment Button API.
 
 **[Payment Service 6](#_Toc133417452)**
 
-**[Confirm Service 9](#_Toc133417453)**
-
-**[Authorization Service 10](#_Toc133417454)**
 
 **[Find Payment Service 11](#_Toc133417455)**
+
+**[Authorization Service 10](#_Toc133417454)**
 
 **[Transaction Expired or Canceled Response: Status CANCEL 15](#_Toc133417456)**
 
@@ -50,17 +49,37 @@ Ours clients that use the Payment Button (PB) will be able to integrate each of 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
 Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
+
+Disclaimer: We currently **do not** have a **Testing environment**. You need to have an active ATH Business account and a active ATH Móvil account.
+
+
 ## Prerequisites
 
 ![Shape2](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
 
 Before using the ATH Móvil's payment you need to have:
 
-1. An active ATH Business account.
+### ATH Business
 
-2. A card registered in your ATH Business profile.
+1\. An active ATH Business account.
 
-3. The public and private key assigned to your business.
+2\. A card registered in your ATH Business profile. 
+
+3\. The public and private key assigned to your business.
+
+For instructions on how to open a ATH Business account please refer to: [ATHB flyer eng letter 1.pdf](https://github.com/user-attachments/files/16267504/ATHB.flyer.eng.letter.1.pdf)
+
+For more information related to ATH Business and how it works please refer to:[ATH BUSINESS_Apr2024.pptx](https://github.com/user-attachments/files/16267585/ATH.BUSINESS_Apr2024.pptx)
+
+### ATH Móvil
+
+To complete the payment for testing purposes you need to have:
+
+1\. An active ATH Móvil account.
+
+2\. A card registered in your ATH Móvil profile. It can not be the same card that is registered in ATH Business.
+
+For more information related to ATH Móvil and how it works please refer to:[ATH Móvil_Apr2024.pptx](https://github.com/user-attachments/files/16267592/ATH.Movil_Apr2024.pptx)
 
 To start working with the API´s for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account.**
 
@@ -170,8 +189,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 | Total | Number | Yes | From 1.00 to 1500.00 | Total amount to be paid by the end user. |
 | Tax | Number | No || Optional variable to display the payment tax (if applicable). |
 | Subtotal | Number | No || Optional variable to display the payment tax (if applicable). |
-| Metadata1 | String | Yes || Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
-| Metadata2 | String | Yes || Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+| Metadata1 | String | Yes || variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.|
+| Metadata2 | String | Yes || variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters. |
 | Items | Array | Yes || Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. _metadata and tax are required but they can be set as null._ |
 | phoneNumber | Number | Yes || The phone number registered to the ATH Móvil account where the payment is going to be sent to. |
 
@@ -196,181 +215,11 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
     }
 
 ```
-
-
-## Confirm Service
-
-![Shape5](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
-
-The Confirm service is the second step in the payment button's process. This service is performed by Evertec via the apps through the SDK our via backend. It does not need to be requested by the merchant or the ecommerce platform. This service updates the ticket order once the customer has received the push notification, reviews and confirms the payment in our ATHM App.
-
-If a Merchant wants to use the API's, then the merchant must configure a service to verify if the confirm was completed to proceed to the 3rd service.
-
-**Endpoint:** https://payments.athmovil.com/api/business-transaction/ecommerce/authorization
-
-**Headers:** Content-type – application/json
-
-**Request**
-
-- **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
-- **cardAccountID** : ID of the card registered on the ATH Móvil's account.
-
-```
-
-{
-
-   "ecommerceId":"{{ecommerceId}}",
-
-   "cardAccountId":"4d72f231e0c13709093727d9c5468f89c1fa4fe0808ee61e90fb870711e43fa2"
-
-}
-
-```
-**Response:**
-```
-
-{
-
-    "status": "success",
-
-    "data": "Payment Confirmed"
-
-}
-
-```
-## Authorization Service
-
-![Shape6](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
-
-After the user completes the Confirm service and authorizes the transaction the ecommerceID gets updated with the confirmation of the user. The last step is to run the authorization services. This service takes the ticket and authorization of the customer and process the transaction in our core system debiting the funds of the customer.
-
-This service "/authorization" requires a payload with one mandatory attribute "ecommerceId", which will be validated by the same service. This service call must be authenticated with JWT.
-
-**Endpoint:** https://payments.athmovil.com/api/business-transaction/ecommerce/authorization
-
-**Headers:** Content-type – application/json
-
-**Request**
-
-- **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
-
-curl --location --request POST 'HOST/business-transaction/ecommerce/authorization \
-
---header 'Authorization: Bearer TOKEN' \
-
---header 'Accept: application/json' \
-
---header 'Authorization: Bearer \
-
---header 'Content-Type: application/json' \
-
---data-raw 
-
-```
-
-{
-
-    "ecommerceId": "41945f05-2b1a-11ed-a1c5-077060cc68b2"
-
-}
-
-```
-
-**Response**
-
-- **status** : Confirm status of the service response.
-- **ecommerceStatus** : represents the status of the ecommerce transaction, either completed, cancelled or expired.
-- **ecommerceID:** Represents the transaction ticket ID token
-- **referenceNumber:** Unique transaction identifier.
-- **transactionDate** : Authorization date
-- **dailyTransactionID** : ID count for the transaction in the day.
-- **businessName** : Business Name for the ATH Business account
-- **businessPath** : Business Path for the ATH Business account
-- **industry** : Industry of the business
-- **total** : Total amount
-- **tax** : Tax captured in the transaction.
-- **subtotal** : Subtotal of the transaction
-- **fee** : Fee charge by ATH Business
-- **netAmount** : Net amount to be funded to the ATH Business account
-- **totalRefundedAmount** : Total refunded amount of the original transaction
-- **metadata1** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
-- **metadata2** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
-- **items** : Items paid for in the transaction.
-
-```
-
-{
-
-"status": "success",
-
-"data": {
-
-"ecommerceStatus": "COMPLETED",
-
-"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
-
-"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
-
-"businessCustomerId": "402894d56e713892016e7f2963de0010",
-
-"transactionDate": "2023-01-13 16:17:06",
-
-"dailyTransactionId": "0006",
-
-"businessName": "Tdameritrade",
-
-"businessPath": "Tdameritrade",
-
-"industry": "ENTERTAINMENT",
-
-"subTotal": 0,
-
-"tax": 0.00,
-
-"total": 1,
-
-"fee": 0.6000000238418579,
-
-"netAmount": 0.40,
-
-"totalRefundedAmount": 0,
-
-"metadata1": "Metadata 1",
-
-"metadata2": "Metada 2",
-
-"items": [
-
-{
-
-"name": "Diego MO",
-
-"description": "Diego",
-
-"quantity": 1,
-
-"price": 10,
-
-"tax": 0,
-
-"metadata": "Articulo 1"
-
-}
-
-],
-
-"isNonProfit": false
-
-}
-
-}
-
-```
 ## Find Payment Service
 
 ![Shape7](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
 
-This service can be used to find the status of a transaction. This service "/business/findPayment" requires a payload with two mandatory attributes "ecommerceId" and "publicToken", which will be validated by the same service.
+This service can be used to find the status of a transaction. This service is required to verify if the transaction has been **"CONFIRMED"** by the **ATH Móvil user** and the request the **/authorization** service. This service "/business/findPayment" requires a payload with two mandatory attributes "ecommerceId" and "publicToken", which will be validated by the same service.
 
 **Endpoint:** https://payments.athmovil.com/api/business-transaction/ecommerce/business/findPayment
 
@@ -415,8 +264,8 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 - **fee** : Fee to be charged in the transaction.
 - **netAmount** : Net amount of the transaction
 - **totalRefundedAmount** : amount to be refunded from the original transaction.
-- **metadata1** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
-- **metadata2** : variable that can be left empty or filled with additional transaction information. Max length 40 characters.
+- **metadata1** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- **metadata2** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
 - **items** : Items paid in the transaction.
 
 ## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
@@ -706,6 +555,133 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
         "isNonProfit": false
 
     }
+
+}
+
+```
+## Authorization Service
+
+![Shape6](RackMultipart20230620-1-9lu3np_html_b18e7627adeba20.gif)
+
+After the user confirms the transaction, the ecommerceID gets updated with the confirmation of the user. The last step is to run the authorization services. This service takes the ticket and authorization of the customer and process the transaction in our core system debiting the funds of the customer.
+
+This service "/authorization" requires a payload with one mandatory attribute "ecommerceId", which will be validated by the same service. This service call must be authenticated with JWT.
+
+**Endpoint:** https://payments.athmovil.com/api/business-transaction/ecommerce/authorization
+
+**Headers:** Content-type – application/json
+
+**Request**
+
+- **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
+
+curl --location --request POST 'HOST/business-transaction/ecommerce/authorization \
+
+--header 'Authorization: Bearer TOKEN' \
+
+--header 'Accept: application/json' \
+
+--header 'Authorization: Bearer \
+
+--header 'Content-Type: application/json' \
+
+--data-raw 
+
+```
+{
+
+    "ecommerceId": "41945f05-2b1a-11ed-a1c5-077060cc68b2"
+
+}
+
+```
+
+**Response**
+
+- **status** : Confirm status of the service response.
+- **ecommerceStatus** : represents the status of the ecommerce transaction, either completed, cancelled or expired.
+- **ecommerceID:** Represents the transaction ticket ID token
+- **referenceNumber:** Unique transaction identifier.
+- **transactionDate** : Authorization date
+- **dailyTransactionID** : ID count for the transaction in the day.
+- **businessName** : Business Name for the ATH Business account
+- **businessPath** : Business Path for the ATH Business account
+- **industry** : Industry of the business
+- **total** : Total amount
+- **tax** : Tax captured in the transaction.
+- **subtotal** : Subtotal of the transaction
+- **fee** : Fee charge by ATH Business
+- **netAmount** : Net amount to be funded to the ATH Business account
+- **totalRefundedAmount** : Total refunded amount of the original transaction
+- **metadata1** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- **metadata2** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- **items** : Items paid for in the transaction.
+
+```
+
+{
+
+"status": "success",
+
+"data": {
+
+"ecommerceStatus": "COMPLETED",
+
+"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+
+"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+
+"businessCustomerId": "402894d56e713892016e7f2963de0010",
+
+"transactionDate": "2023-01-13 16:17:06",
+
+"dailyTransactionId": "0006",
+
+"businessName": "Tdameritrade",
+
+"businessPath": "Tdameritrade",
+
+"industry": "ENTERTAINMENT",
+
+"subTotal": 0,
+
+"tax": 0.00,
+
+"total": 1,
+
+"fee": 0.6000000238418579,
+
+"netAmount": 0.40,
+
+"totalRefundedAmount": 0,
+
+"metadata1": "Metadata 1",
+
+"metadata2": "Metada 2",
+
+"items": [
+
+{
+
+"name": "Diego MO",
+
+"description": "Diego",
+
+"quantity": 1,
+
+"price": 10,
+
+"tax": 0,
+
+"metadata": "Articulo 1"
+
+}
+
+],
+
+"isNonProfit": false
+
+}
 
 }
 
