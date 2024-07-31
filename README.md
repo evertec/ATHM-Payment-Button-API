@@ -326,7 +326,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 "tax": 0,
 
-"metadata": "Bitcoin es lo mejor"
+"metadata": "metadata"
 
 }
 
@@ -396,7 +396,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
                 "tax": 1,
 
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "metadata,
 
                 "formattedPrice": "",
 
@@ -469,7 +469,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
                 "tax": 1,
 
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "metadata",
 
                 "formattedPrice": "",
 
@@ -543,7 +543,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
                 "tax": 1,
 
-                "metadata": "Bitcoin es lo mejor",
+                "metadata": "metadata",
 
                 "formattedPrice": "",
 
