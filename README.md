@@ -155,7 +155,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 "metadata2": "Metada 2",
 
-"items": [
+"items": []
 
 {
 
@@ -269,76 +269,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 - **metadata2** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
 - **items** : Items paid in the transaction.
 
-## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
-```
 
-{
-
-"status": "success",
-
-"data": {
-
-"ecommerceStatus": "COMPLETED",
-
-"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
-
-"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
-
-"businessCustomerId": "402894d56e713892016e7f2963de0010",
-
-"transactionDate": "2023-01-13 16:17:06",
-
-"dailyTransactionId": "0006",
-
-"businessName": "Tdameritrade",
-
-"businessPath": "Tdameritrade",
-
-"industry": "ENTERTAINMENT",
-
-"subTotal": 0,
-
-"tax": 0.00,
-
-"total": 1,
-
-"fee": 0.6000000238418579,
-
-"netAmount": 0.40,
-
-"totalRefundedAmount": 0,
-
-"metadata1": "Metadata 1",
-
-"metadata2": "Metada 2",
-
-"items": [
-
-{
-
-"name": "Diego MO",
-
-"description": "Diego",
-
-"quantity": 1,
-
-"price": 10,
-
-"tax": 0,
-
-"metadata": "metadata"
-
-}
-
-],
-
-"isNonProfit": false
-
-}
-
-}
-
-```
 ## Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
 ```
 
@@ -486,6 +417,78 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 }
 
 ```
+
+## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
+```
+
+{
+
+"status": "success",
+
+"data": {
+
+"ecommerceStatus": "COMPLETED",
+
+"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+
+"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+
+"businessCustomerId": "402894d56e713892016e7f2963de0010",
+
+"transactionDate": "2023-01-13 16:17:06",
+
+"dailyTransactionId": "0006",
+
+"businessName": "Tdameritrade",
+
+"businessPath": "Tdameritrade",
+
+"industry": "ENTERTAINMENT",
+
+"subTotal": 0,
+
+"tax": 0.00,
+
+"total": 1,
+
+"fee": 0.6000000238418579,
+
+"netAmount": 0.40,
+
+"totalRefundedAmount": 0,
+
+"metadata1": "Metadata 1",
+
+"metadata2": "Metada 2",
+
+"items": [
+
+{
+
+"name": "Diego MO",
+
+"description": "Diego",
+
+"quantity": 1,
+
+"price": 10,
+
+"tax": 0,
+
+"metadata": "metadata"
+
+}
+
+],
+
+"isNonProfit": false
+
+}
+
+}
+
+```
+
 ## Transaction Expired or Canceled Response: Status CANCEL
 ```
 
