@@ -240,14 +240,16 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 --header 'Content-Type: application/json' \
 
---data-raw '{
+--data-raw '
+```
+{
 
 "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
 
 "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
 }'
-
+```
 **Response**
 
 - **status** : Confirm status of the service response.
@@ -586,9 +588,6 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/authoriz
 
 --header 'Content-Type: application/json' \
 
---header 'Authorization: Bearer ' \
-
---header 'Cookie: AWSALBTG=Px9E8oRBna5K/o2hDqW6z9sSnSeGcmJwVHWfDI3QWNsE/19Ap+G+J3OYH9FMdOOktYBbvg8tUSGw6QHnxWY+tuQl12ALzTz1iIuz9IFMaSgX82FFX7jx6fLoZgGiGrlald964qfsKwpmHOT1Ii6MFaI2iJlx1jhDt9WKDZzQNaPTj8qd6y0=; AWSALBTGCORS=Px9E8oRBna5K/o2hDqW6z9sSnSeGcmJwVHWfDI3QWNsE/19Ap+G+J3OYH9FMdOOktYBbvg8tUSGw6QHnxWY+tuQl12ALzTz1iIuz9IFMaSgX82FFX7jx6fLoZgGiGrlald964qfsKwpmHOT1Ii6MFaI2iJlx1jhDt9WKDZzQNaPTj8qd6y0=' \
 --data-raw ''
 
 
