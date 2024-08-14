@@ -128,19 +128,18 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 --header 'Content-Type: application/json' \
 
---data-raw '{
-
-"env": "production",
-
 **Request**
 
 - **publicToken** : This public token is the identifier of each business registered for the use of the payment button.
 - **total** : The total is the amount that the user who just invoked the payment button must pay the merchant.
 - **Timeout** : Time limit before the service responds with timeout error.
-
+  
+--data-raw
 ```
+'{
 
-{
+"env": "production",
+
 "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
 "timeout": "5000",
@@ -155,7 +154,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 "metadata2": "Metada 2",
 
-"items": []
+"items": [
 
 {
 
@@ -569,7 +568,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 After the user confirms the transaction, the ecommerceID gets updated with the confirmation of the user. The last step is to run the authorization services. This service takes the ticket and authorization of the customer and process the transaction in our core system debiting the funds of the customer.
 
-This service "/authorization" requires a payload with one mandatory attribute "ecommerceId", which will be validated by the same service. This service call must be authenticated with JWT.
+This service "/authorization" requires the authorization token received in the /payment service, which will be validated by the same service. This service call must be authenticated with JWT.
 
 **Endpoint:** https://payments.athmovil.com/api/business-transaction/ecommerce/authorization
 
@@ -577,49 +576,23 @@ This service "/authorization" requires a payload with one mandatory attribute "e
 
 **Request**
 
-- **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
 
-curl --location --request POST 'HOST/business-transaction/ecommerce/authorization \
 
---header 'Authorization: Bearer TOKEN' \
+curl --location --request POST 'HOST/api/business-transaction/ecommerce/authorization \
 
 --header 'Accept: application/json' \
 
---header 'Authorization: Bearer \
+--header 'Authorization: Bearer TOKEN 'auth_token' \
 
 --header 'Content-Type: application/json' \
 
---data-raw 
+--header 'Authorization: Bearer ' \
 
-```
-{
+--header 'Cookie: AWSALBTG=Px9E8oRBna5K/o2hDqW6z9sSnSeGcmJwVHWfDI3QWNsE/19Ap+G+J3OYH9FMdOOktYBbvg8tUSGw6QHnxWY+tuQl12ALzTz1iIuz9IFMaSgX82FFX7jx6fLoZgGiGrlald964qfsKwpmHOT1Ii6MFaI2iJlx1jhDt9WKDZzQNaPTj8qd6y0=; AWSALBTGCORS=Px9E8oRBna5K/o2hDqW6z9sSnSeGcmJwVHWfDI3QWNsE/19Ap+G+J3OYH9FMdOOktYBbvg8tUSGw6QHnxWY+tuQl12ALzTz1iIuz9IFMaSgX82FFX7jx6fLoZgGiGrlald964qfsKwpmHOT1Ii6MFaI2iJlx1jhDt9WKDZzQNaPTj8qd6y0=' \
+--data-raw ''
 
-    "ecommerceId": "41945f05-2b1a-11ed-a1c5-077060cc68b2"
-
-}
-
-```
 
 **Response**
-
-- **status** : Confirm status of the service response.
-- **ecommerceStatus** : represents the status of the ecommerce transaction, either completed, cancelled or expired.
-- **ecommerceID:** Represents the transaction ticket ID token
-- **referenceNumber:** Unique transaction identifier.
-- **transactionDate** : Authorization date
-- **dailyTransactionID** : ID count for the transaction in the day.
-- **businessName** : Business Name for the ATH Business account
-- **businessPath** : Business Path for the ATH Business account
-- **industry** : Industry of the business
-- **total** : Total amount
-- **tax** : Tax captured in the transaction.
-- **subtotal** : Subtotal of the transaction
-- **fee** : Fee charge by ATH Business
-- **netAmount** : Net amount to be funded to the ATH Business account
-- **totalRefundedAmount** : Total refunded amount of the original transaction
-- **metadata1** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
-- **metadata2** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
-- **items** : Items paid for in the transaction.
 
 ```
 
@@ -690,7 +663,24 @@ curl --location --request POST 'HOST/business-transaction/ecommerce/authorizatio
 }
 
 ```
-
+- **status** : Confirm status of the service response.
+- **ecommerceStatus** : represents the status of the ecommerce transaction, either completed, cancelled or expired.
+- **ecommerceID:** Represents the transaction ticket ID token
+- **referenceNumber:** Unique transaction identifier.
+- **transactionDate** : Authorization date
+- **dailyTransactionID** : ID count for the transaction in the day.
+- **businessName** : Business Name for the ATH Business account
+- **businessPath** : Business Path for the ATH Business account
+- **industry** : Industry of the business
+- **total** : Total amount
+- **tax** : Tax captured in the transaction.
+- **subtotal** : Subtotal of the transaction
+- **fee** : Fee charge by ATH Business
+- **netAmount** : Net amount to be funded to the ATH Business account
+- **totalRefundedAmount** : Total refunded amount of the original transaction
+- **metadata1** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- **metadata2** : variable that can be filled with additional transaction information. For example store ID, location,etc. Max length 40 characters.
+- **items** : Items paid for in the transaction.
 
 ## Update Payment (Phone Number)
 
@@ -722,12 +712,14 @@ Header:
     - Host
     - Required Auth Token of type Bearer
 
+```
+{
 "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
 
 "phoneNumber": "7866575255",
 
 }'
-
+```
 **Response:**
 ```
 
