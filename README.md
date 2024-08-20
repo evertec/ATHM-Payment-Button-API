@@ -84,7 +84,7 @@ For more information related to ATH Móvil and how it works please refer to:[ATH
 
 To start working with the API´s for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account.**
 
-**Support**
+## Support
 If you need help signing up, adding a card or have any other question please refer to https://ath.business.com/preguntas. For technical support please complete the following form:  https://ath.business/botondepago.
 
 **ATH Business Settings:**
@@ -138,8 +138,8 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 - **Timeout** : Time limit before the service responds with timeout error.
   
 --data-raw
-```
-'{
+ ```json 
+{
 
 "env": "production",
 
@@ -171,7 +171,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 "tax": "1",
 
-"metadata": "Diego"
+"metadata": "metadata"
 
 }
 
@@ -179,7 +179,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 
 "phoneNumber": "5613305493"
 
-}'
+}
 
 ```
 
@@ -200,9 +200,9 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
 **Response**
 
 - **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
-- **auth\_token** : This token identifies the transaction authorized by the user pending to be submitted by the ecommerce app.
+- **auth_token** : This token identifies the transaction authorized by the user pending to be submitted by the ecommerce app.
 
-```
+```json
 
 {
 
@@ -211,9 +211,9 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/payment'
     "data": 
     {
 
-        "ecommerceId": "0ab257f5-3837-11ed-855f-9b4af5a393ce",
+        "ecommerceId": "0ab257f5-3837-11ed-855f-9b4af5a393ce", //Transaction invoice/ticket
 
-        "auth_token": "eyJraWQiOiJVVTZpdEt0U0N5Tm9abUFkWkt3ZGxpSDE2SDk5SXI5clNFeXJwbzh6dVVFIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyZDE3ZmUzZjg4ZWNkYTZiZTcxOTdjOWFiNGVhNmU3OTI4ZmU0NDk1ZWVjOWU1M2MzZTg1ZDIyMWE5MjU2NjM2NDcyMjNmZDA0ODBhNjg4YjU0MWNkMGJmODI3OWI2YjAiLCJmaUlkIjoiIiwibmJmIjoxNjYzNjA0NDU4LCJhenAiOltdLCJwZXJtaXNzaW9ucyI6WyJjdXN0b21lci5idXNpbmVzcy5lY29tbWVyY2UuYXV0aG9yaXphdGlvbjp3cml0ZSJdLCJpc3MiOiJQcm9jZXNzIFBheW1lbnQiLCJzY29wZXMiOlsiY3VzdG9tZXIuYnVzaW5lc3MuZWNvbW1lcmNlLmF1dGhvcml6YXRpb246d3JpdGUiXSwiZXhwIjoxNjYzNjA0NDU4LCJpYXQiOjE2NjM2MDQ0NTh9.ffZ5NWgyb-87f\_qVnytfsJl-nfDGB3mB98HwceORLgC6cs\_S4PgMYlbhMsrIacOG7Vz3LatT55o1YShiGRgsk8lwNDl\_v-tSwIspGLO2kHdYd4oBrD4Y5nWpFgsZ6zYkjVPyM5ZqUlH\_nVSlDGKm6HevqunSl\_D6pgAA25bd5MJ\_3M5FArMbM-iVDLpj6k4X3WRJZvSenYBAYczl6c\_BziuMprx6g0R9nDdzmtj2-4QGQJ5Tf2CP7Yj5A15M-z\_lDROcvMISzuR-2OVXpp5NbLEuu\_4TO4P6SoFOASksb3CFQC62YVIUH8E9hf0Sgocti0CHR4E9D25JFQMytXvfcA"
+        "auth_token": "eyJraWQiOiJVVTZpdEt0U0N5Tm9abUFkWkt3ZGxpSDE2SDk5SXI5clNFeXJwbzh6dVVFIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyZDE3ZmUzZjg4ZWNkYTZiZTcxOTdjOWFiNGVhNmU3OTI4ZmU0NDk1ZWVjOWU1M2MzZTg1ZDIyMWE5MjU2NjM2NDcyMjNmZDA0ODBhNjg4YjU0MWNkMGJmODI3OWI2YjAiLCJmaUlkIjoiIiwibmJmIjoxNjYzNjA0NDU4LCJhenAiOltdLCJwZXJtaXNzaW9ucyI6WyJjdXN0b21lci5idXNpbmVzcy5lY29tbWVyY2UuYXV0aG9yaXphdGlvbjp3cml0ZSJdLCJpc3MiOiJQcm9jZXNzIFBheW1lbnQiLCJzY29wZXMiOlsiY3VzdG9tZXIuYnVzaW5lc3MuZWNvbW1lcmNlLmF1dGhvcml6YXRpb246d3JpdGUiXSwiZXhwIjoxNjYzNjA0NDU4LCJpYXQiOjE2NjM2MDQ0NTh9.ffZ5NWgyb-87f\_qVnytfsJl-nfDGB3mB98HwceORLgC6cs\_S4PgMYlbhMsrIacOG7Vz3LatT55o1YShiGRgsk8lwNDl\_v-tSwIspGLO2kHdYd4oBrD4Y5nWpFgsZ6zYkjVPyM5ZqUlH\_nVSlDGKm6HevqunSl\_D6pgAA25bd5MJ\_3M5FArMbM-iVDLpj6k4X3WRJZvSenYBAYczl6c\_BziuMprx6g0R9nDdzmtj2-4QGQJ5Tf2CP7Yj5A15M-z\_lDROcvMISzuR-2OVXpp5NbLEuu\_4TO4P6SoFOASksb3CFQC62YVIUH8E9hf0Sgocti0CHR4E9D25JFQMytXvfcA" //Token required to later execute /authorization service
 
     }
 
@@ -244,14 +244,14 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 --header 'Content-Type: application/json' \
 
 --data-raw '
-```
+```json
 {
 
 "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
 
 "publicToken": "a66ce73d04f2087615f6320b724defc5b4eedc55",
 
-}'
+}
 ```
 **Response**
 
@@ -275,7 +275,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 
 ## Transaction Pending to be confirmed by the ATH Móvil customer (/payment) Response: Status **OPEN**
-```
+```json
 
 {
 
@@ -285,7 +285,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
         "ecommerceStatus": "OPEN",
 
-        "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
+        "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e", //Transaction invoice/ticket
 
         "referenceNumber": "",
 
@@ -331,7 +331,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
                 "tax": 1,
 
-                "metadata": "metadata,
+                "metadata": "metadata",
 
                 "formattedPrice": "",
 
@@ -348,7 +348,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 ```
 
 ## Transaction confirmed by the ATH Móvil customer but pending to be processed by the merchant (/payment+/confirm) Response: Status **CONFIRM**
-```
+```json
 
 {
 
@@ -358,9 +358,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
         "ecommerceStatus": "CONFIRM",
 
-        "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e",
+        "ecommerceId": "39906664-e44e-11ed-b127-a519df48811e", //Transaction invoice/ticket
 
-        "referenceNumber": "",
+        "referenceNumber": "", 
 
         "businessCustomerId": "402894d56e713892016e7f2963de0010",
 
@@ -423,7 +423,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 ```
 
 ## Completed transaction (/Payment +/Confirmed & /Authorize) Response: Status **COMPLETED**
-```
+```json
 
 {
 
@@ -433,9 +433,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
 "ecommerceStatus": "COMPLETED",
 
-"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c", //Transaction invoice/ticket
 
-"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b", //Payment transactionId
 
 "businessCustomerId": "402894d56e713892016e7f2963de0010",
 
@@ -494,7 +494,7 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 ```
 
 ## Transaction Expired or Canceled Response: Status CANCEL
-```
+```json
 
 {
 
@@ -504,9 +504,9 @@ curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-
 
         "ecommerceStatus": "CANCEL",
 
-        "ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17",
+        "ecommerceId": "29bc7846-e44f-11ed-b127-839ef0792c17", //Transaction invoice/ticket
 
-        "referenceNumber": "",
+        "referenceNumber": "", 
 
         "businessCustomerId": "402894d56e713892016e7f2963de0010",
 
@@ -596,7 +596,7 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/authoriz
 
 **Response**
 
-```
+```json
 
 {
 
@@ -606,9 +606,9 @@ curl --location --request POST 'HOST/api/business-transaction/ecommerce/authoriz
 
 "ecommerceStatus": "COMPLETED",
 
-"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c",
+"ecommerceId": "730e2c49-9387-11ed-8f43-c31784ccfc6c", //Transaction invoice/ticket
 
-"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b",
+"referenceNumber": "215070443-402894c185ab1be40185acfe61c2000b", //Payment transactionId
 
 "businessCustomerId": "402894d56e713892016e7f2963de0010",
 
@@ -714,16 +714,16 @@ Header:
     - Host
     - Required Auth Token of type Bearer
 
-```
+```json
 {
-"ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
+"ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527", 
 
 "phoneNumber": "7866575255",
 
-}'
+}
 ```
 **Response:**
-```
+```json
 
 {
 
@@ -753,7 +753,7 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
     - Host
 
 **Request:**
-```
+```json
 
 {
 
@@ -761,7 +761,7 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
 
 "privateToken": "JHEFEWP2048FNDFLKJWB2",
 
-"referenceNumber": "fdew98ffw9fbfewkjb", //transactionId
+"referenceNumber": "fdew98ffw9fbfewkjb", //Payment transactionId
 
 "amount": "1.00",
 
@@ -772,7 +772,7 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
 ```
 
 **Response**
-```
+```json
 
 {
 
@@ -865,7 +865,7 @@ This is a Web Service to cancel the ecommerce transaction.
     - Host
 
 **Request:**
-```
+```json
 
 "ecommerceId": "177a50fd-39fb-11ed-8b3d-230262020527",
 
@@ -873,7 +873,7 @@ This is a Web Service to cancel the ecommerce transaction.
 
 ```
 **Response:**
-```
+```json
 
 {
 
@@ -893,7 +893,7 @@ This is a Web Service to cancel the ecommerce transaction.
 The error messages for the PB API's will follow a standard response structure of status, message, error code and data. Below are some examples of the responses and a list of all available error scenarios.
 
 ## Request without a token authentication.
-```
+```json
 
 {
 
@@ -909,7 +909,7 @@ The error messages for the PB API's will follow a standard response structure of
 
 ```
 ## Request with an expired token.
-```
+```json
 
 {
 
@@ -925,7 +925,7 @@ The error messages for the PB API's will follow a standard response structure of
 
 ```
 ## When the Object request it's empty.
-```
+```json
 
 {
 
@@ -933,7 +933,7 @@ The error messages for the PB API's will follow a standard response structure of
 
     "message": "Required request body is missing",
 
-    "errorcode": "BTRA\_0006",
+    "errorcode": "BTRA_0006",
 
     "data": null
 
