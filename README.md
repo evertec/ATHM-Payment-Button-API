@@ -84,6 +84,9 @@ For more information related to ATH Móvil and how it works please refer to:[ATH
 
 To start working with the API´s for ATH Móvils Payment Button with all its services, it is mandatory to have a Public Token per each business. This Public Token is found in the settings section of the ATH Business app and is assigned one unique token per ATH Business account.**
 
+**Support**
+If you need help signing up, adding a card or have any other question please refer to https://ath.business.com/preguntas. For technical support please complete the following form:  https://ath.business/botondepago.
+
 **ATH Business Settings:**
 
 ![Setting1](https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/f48d3f66-0659-41ab-b2ca-dc26e108575c) ![Setting2](https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/66f310c5-caa5-4d06-91b9-ac5a93d367e9)
