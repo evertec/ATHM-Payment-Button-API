@@ -7,6 +7,7 @@ for ATH Móvil Payment Button API.
 | --- | --- | --- |
 | 04/12/2023 | Initial version 1.0 |
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
+| 12/17/2024 | Version 1.2.1 |  Added API sequence diagram. |
 
 # Table of Contents
 
@@ -110,6 +111,11 @@ The new version of the payment button will introduce more security and synchroni
 
 
 <img width="468" alt="Picture1" src="https://github.com/evertec/ATHM-Payment-Button-API/assets/99409598/95e8d2c9-c43b-4061-bb38-5f342821524c">
+
+API Sequence:
+
+![Payment Button ATHM API drawio](https://github.com/user-attachments/assets/d42dd804-a7ba-4d09-8570-89b60ab071ad)
+
 
 ##
 
