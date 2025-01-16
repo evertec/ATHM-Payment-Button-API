@@ -8,6 +8,7 @@ for ATH Móvil Payment Button API.
 | 04/12/2023 | Initial version 1.0 |
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 | 12/17/2024 | Version 1.2.1 |  Added API sequence diagram. |
+| 1/16/2025 | Version 1.2.3 |  Updated headers for Refund service. |
 
 # Table of Contents
 
@@ -755,7 +756,6 @@ This is a Web Service that allows to refund a completed ecommerce transaction.
   - Header:
     - Accept: application/json
     - Content-Type: application/json
-    - Authorization; Bearer Token
     - Host
 
 **Request:**
@@ -867,7 +867,6 @@ This is a Web Service to cancel the ecommerce transaction.
   - Header:
     - Accept: application/json
     - Content-Type: application/json
-    - Authorization; Bearer Token
     - Host
 
 **Request:**
