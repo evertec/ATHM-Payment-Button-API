@@ -240,9 +240,9 @@ This service can be used to find the status of a transaction. This service is re
 - **ecommerceId** : This ID represent the ticket of the transaction to be paid with the information provided in the request.
 - **publicToken** : Determines the business account that the payment will be sent to.
 
-curl --location --request POST 'https://vpce-04edaf73e4e83adea-flbxnqbx.execute-api.us-east-1.vpce.amazonaws.com/api/business-transaction/ecommerce/business/findPayment' \
+curl --location --request POST 'https://payments.athmovil.com/api/business-transaction/ecommerce/business/findPayment' \
 
---header 'Host: ozm9fx7yw5.execute-api.us-east-1.amazonaws.com' \
+--header 'Host: https://payments.athmovil.com' \
 
 --header 'Accept: application/json' \
 
