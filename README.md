@@ -9,6 +9,7 @@ for ATH Móvil Payment Button API.
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 | 12/17/2024 | Version 1.2.1 |  Added API sequence diagram. |
 | 1/16/2025 | Version 1.2.2 |  Updated headers for Refund service. |
+| 2/27/2025 | Version 1.2.3 |  WooCommerce plug in now available. |
 
 # Table of Contents
 
@@ -50,8 +51,6 @@ The ATH Móvil Payment Button is an API REST based application implemented to su
 Ours clients that use the Payment Button (PB) will be able to integrate each of these granular services into their business components and/or applications. This code works with HTTP protocols offered by REST based interfaces that are implemented through a separately web-based API layer. They can take advantage of multiple deployable service components, scalability, and a high degree of application and component decoupling provided by the API.
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
-
-Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
 
 Disclaimer: We currently **do not** have a **Testing environment**. You need to have an active ATH Business account and a active ATH Móvil account.
 
