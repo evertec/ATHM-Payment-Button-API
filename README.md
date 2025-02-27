@@ -9,7 +9,7 @@ for ATH Móvil Payment Button API.
 | 07/17/2024 | Version 1.2 |  General information related to ATH Business & ATH Móvil with instructions on how to open an account. |
 | 12/17/2024 | Version 1.2.1 |  Added API sequence diagram. |
 | 1/16/2025 | Version 1.2.2 |  Updated headers for Refund service. |
-| 2/27/2025 | Version 1.2.3 |  WooCommerce plug in now available. |
+
 
 # Table of Contents
 
