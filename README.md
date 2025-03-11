@@ -48,7 +48,7 @@ for ATH Móvil Payment Button API.
 
 The ATH Móvil Payment Button is an API REST based application implemented to support ecommerce payments for ATH Business merchants. The API is available for integration, but the merchant must have an active ATH Business account with an active ATH card to receive payments.
 
-Ours clients that use the Payment Button (PB) will be able to integrate each of these granular services into their business components and/or applications. This code works with HTTP protocols offered by REST based interfaces that are implemented through a separately web-based API layer. They can take advantage of multiple deployable service components, scalability, and a high degree of application and component decoupling provided by the API.
+Our clients that use the Payment Button (PB) will be able to integrate each of these granular services into their business components and/or applications. This code works with HTTPS protocols offered by RESTful interfaces that are implemented through a separate web-based API layer. They can take advantage of multiple deployable service components, scalability, and a high degree of application and component decoupling provided by the API.
 
 The API called for this JavaScript code is build based on JWT protocol to securely authenticate the communication between our services.
 
